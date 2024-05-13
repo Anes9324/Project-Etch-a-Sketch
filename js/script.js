@@ -22,9 +22,7 @@ function createGrid(numberSquares) {
             let rgbRandom = getRandomColor();
             e.target.style.background = rgbRandom;
             logGridSelected(e);
-            gridSelectionLog.forEach(grid => {
-                reduceOpacity(grid, gridSelectionLog);
-            });
+            reduceOpacity(gridSelectionLog);
         });
     }; 
 };
@@ -66,6 +64,8 @@ function logGridSelected(e) {
     }
 }
 
-function reduceOpacity(div, parentDiv) {
-    div.style.opacity = `${100 - (parentDiv.length-1) * 10}%`; 
+function reduceOpacity(parentDiv) {
+    for (let i=0; i < logGridSelected.length; i++) {
+        parentDiv[i].style.opacity = `${100 - (parentDiv.length-i) * 8}%`;
+}
 }
